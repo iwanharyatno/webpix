@@ -144,7 +144,8 @@ const drawingBoard = {
         const x = xIndex * this.cellSize;
         const y = yIndex * this.cellSize;
 
-        ctx.clearRect(x, y, this.cellSize, this.cellSize);
+        ctx.fillStyle = '#a0a0a022'
+        ctx.fillRect(x, y, this.cellSize, this.cellSize);
     },
     _changePixel(xIndex, yIndex, color) {
         this.pixels[xIndex][yIndex] = color;
