@@ -10,6 +10,7 @@ const colorPalette = {
         if (this.colors.indexOf(color) >= 0) return;
 
         this.colors.unshift(color);
+        this.currentColor = color;
         this._updateContainer();
     },
     _updateContainer() {

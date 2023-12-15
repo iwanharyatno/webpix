@@ -93,6 +93,10 @@ body {
     width: 100%;
 }
 
+.misc-tools {
+    margin-top: 0.2rem;
+}
+
 h1 {
     margin: 0;
     padding: 0;

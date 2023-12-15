@@ -80,7 +80,7 @@ const drawingBoard = {
         const xCells = Math.round(w / cellSize);
         const yCells = Math.round(h / cellSize);
 
-        ctx.strokeStyle = '#a0a0a0';
+        ctx.strokeStyle = '#00000044';
         ctx.lineWidth = 2;
         for (let i = 1; i < xCells; i++) {
             ctx.beginPath();
@@ -138,6 +138,7 @@ const drawingBoard = {
     },
     draw() {
         const ctx = this.ctx;
+        ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this._drawPixels(ctx);
         this._drawGrid(ctx);
     }
