@@ -7,7 +7,9 @@ const colorPalette = {
         this._updateContainer();
     },
     addColor(color) {
-        this.colors.push(color);
+        if (this.colors.indexOf(color) >= 0) return;
+
+        this.colors.unshift(color);
         this._updateContainer();
     },
     _updateContainer() {
@@ -16,6 +18,11 @@ const colorPalette = {
         const addColorButton = document.createElement('button');
         addColorButton.classList.add('color', 'plus');
         addColorButton.innerText = '+';
+        addColorButton.addEventListener('click', () => {
+            colorPicker.pick((result) => {
+                this.addColor(result);
+            });
+        });
         this.container.prepend(addColorButton);
 
         this.colors.forEach(c => {
