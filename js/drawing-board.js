@@ -27,8 +27,6 @@ const drawingBoard = {
         this.canvas.addEventListener('mousedown', (e) => {
             const [xIndex, yIndex] = this._getIndicesFromClickEvent(e);
 
-            console.log(this.shiftDown);
-
             if (this.shiftDown) {
                 this._clearPixel(xIndex, yIndex);
             } else {
@@ -77,11 +75,17 @@ const drawingBoard = {
     },
     setCellSize(cellSize) {
         this.cellSize = cellSize;
-        this.pixels = new Array(cellSize).fill(null).map(_ => new Array(cellSize).fill(null));
+        const w = this.canvas.width;
+        const h = this.canvas.height;
+
+        const xCells = Math.round(w / cellSize);
+        const yCells = Math.round(h / cellSize);
+
+        this.pixels = new Array(xCells).fill(null).map(_ => new Array(yCells).fill(null));
     },
     _getIndicesFromClickEvent(e) {
-        let displayX = e.clientX - e.target.offsetLeft;
-        let displayY = e.clientY - e.target.offsetTop;
+        let displayX = document.documentElement.scrollLeft + (e.clientX - e.target.offsetLeft);
+        let displayY = document.documentElement.scrollTop + (e.clientY - e.target.offsetTop);
         const [x, y] = this._screenCoordToCanvasCoord(displayX, displayY);
 
         const xIndex = Math.floor(x / this.cellSize);

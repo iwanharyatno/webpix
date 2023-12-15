@@ -15,7 +15,7 @@ deleteModeMobile.init(checkDeleteMode);
 showGrid.init(checkShowGrid);
 
 drawingBoard.init(canvas);
-drawingBoard.setCellSize(60);
+drawingBoard.setCellSize(30);
 
 drawingBoard.draw();
 
