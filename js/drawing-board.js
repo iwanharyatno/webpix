@@ -1,4 +1,11 @@
 const drawingBoard = {
+    set downloading(value) {
+        this._downloading = value;
+        this.draw();
+    },
+    get downloading() {
+        return this._downloading;
+    },
     init(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
@@ -13,11 +20,14 @@ const drawingBoard = {
 
         this.canvas.addEventListener('mouseup', (e) => {
             this.ctrlDown = false;
+            if (deleteModeMobile.value) return;
             this.shiftDown = false;
         });
 
         this.canvas.addEventListener('mousedown', (e) => {
             const [xIndex, yIndex] = this._getIndicesFromClickEvent(e);
+
+            console.log(this.shiftDown);
 
             if (this.shiftDown) {
                 this._clearPixel(xIndex, yIndex);
@@ -46,6 +56,14 @@ const drawingBoard = {
             } else {
                 this._changePixel(xIndex, yIndex, colorPalette.currentColor);
             }
+        });
+
+        deleteModeMobile.element.addEventListener('change', (e) => {
+            this.shiftDown = e.target.checked;
+        });
+
+        showGrid.element.addEventListener('change', (e) => {
+            this.draw();
         });
 
         window.addEventListener('keydown', (e) => {
@@ -140,6 +158,16 @@ const drawingBoard = {
         const ctx = this.ctx;
         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this._drawPixels(ctx);
-        this._drawGrid(ctx);
+        if (showGrid.value && !this.downloading) this._drawGrid(ctx);
+    },
+    download() {
+        this.downloading = true;
+
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('png');
+        link.download = 'pixels - ' + +new Date() + '.png';
+        link.click();
+
+        this.downloading = false;
     }
 }

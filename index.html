@@ -24,8 +24,13 @@
         </div>
         <canvas id="drawingBoard" width="1080" height="1080"></canvas>
         <div class="misc-tools">
-            <input type="checkbox" id="deleteModeCheck">
-            <label for="deleteModeCheck">Delete Mode</label>
+            <input type="checkbox" id="deleteModeCheck" data-mobile>
+            <label for="deleteModeCheck" data-mobile>Delete Mode</label>
+            <input type="checkbox" id="showGridCheck" checked>
+            <label for="showGridCheck">Show Grid</label>
+        </div>
+        <div class="button-list">
+            <button class="btn btn-full" id="downloadButton">Quick Download</button>
         </div>
     </main>
 
@@ -36,6 +41,8 @@
     <script src="js/color-picker.js"></script>
     <script src="js/color-palette.js"></script>
     <script src="js/drawing-board.js"></script>
+    <script src="js/misc-tools.js"></script>
+
     <script src="js/main.js"></script>
 </body>
 </html>

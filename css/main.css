@@ -97,6 +97,10 @@ body {
     margin-top: 0.2rem;
 }
 
+.button-list {
+    margin-top: 0.75rem;
+}
+
 h1 {
     margin: 0;
     padding: 0;
@@ -126,6 +130,16 @@ h1 {
     background-color: #1f2e80;
 }
 
+.btn-full {
+    width: 100%;
+}
+
 #bottom {
     text-align: center;
+}
+
+@media screen and (min-width: 1440px) {
+    *[data-mobile] {
+        display: none;
+    }
 }
