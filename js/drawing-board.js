@@ -7,17 +7,16 @@ const drawingBoard = {
         this.pixels = [];
 
         this.canvas.addEventListener('mousedown', (e) => {
-            this.shiftDown = e.which == 3;
+            if (!this.shiftDown) this.shiftDown = e.which == 3;
             this.ctrlDown = e.which == 1;
         });
 
         this.canvas.addEventListener('mouseup', (e) => {
-            e.preventDefault();
             this.ctrlDown = false;
             this.shiftDown = false;
         });
 
-        this.canvas.addEventListener('click', (e) => {
+        this.canvas.addEventListener('mousedown', (e) => {
             const [xIndex, yIndex] = this._getIndicesFromClickEvent(e);
 
             if (this.shiftDown) {
