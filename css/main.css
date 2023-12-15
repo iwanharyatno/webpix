@@ -1,0 +1,84 @@
+html {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#head {
+    padding: 1rem 0;
+    text-align: center;
+    background-color: #f3f3f3;
+}
+
+.title {
+    margin-top: 1rem;
+    font-weight: 500;
+}
+.description {
+    font-weight: 200;
+}
+
+#editor {
+    max-width: 36rem;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+.colors-container {
+    grid-column: 1/2;
+    grid-row: 1/4;
+    display: flex;
+    gap: 0.1rem;
+    align-items: center;
+    overflow-x: scroll;
+    padding: 0.1rem;
+    margin-bottom: 0.5rem;
+    justify-content: end;
+}
+
+.colors-container::-webkit-scrollbar {
+    scrollbar-width: 2px;
+}
+
+.color {
+    border: none;
+    font-size: larger;
+    color: transparent;
+}
+.color.plus {
+    color: #222222;
+}
+.color.selected {
+    border: 2px solid #222222;
+}
+
+#drawingBoard {
+    border: 1px solid #444444;
+    border-radius: 0.2rem;
+    width: 100%;
+}
+
+.tools-container {
+    background-color: maroon;
+    grid-column: 6/7;
+    grid-row: 1/4;
+}
+
+.main-buttons {
+    grid-row: 4/5;
+    grid-column: 2/6;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+#bottom {
+    text-align: center;
+}
