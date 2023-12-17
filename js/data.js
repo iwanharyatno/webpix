@@ -12,7 +12,9 @@ const historyStore = {
             this.pixelHistory.splice(this.historyIndex + 1);
         }
 
-        this.pixelHistory.push(pixels);
+        // Prevent reference copy
+        const checkpoint = pixels.map(a => a.slice());
+        this.pixelHistory.push(checkpoint);
         this.historyIndex += 1;
     },
     getCurrentCheckpoint() {
