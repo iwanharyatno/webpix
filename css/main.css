@@ -29,6 +29,13 @@ body {
     padding: 1rem;
 }
 
+.quick-tools {
+    display: flex;
+    justify-content: space-between;
+}
+.quick-buttons {
+    display: flex;
+}
 .color-tools {
     position: relative;
 }
@@ -60,8 +67,6 @@ body {
 }
 
 .colors-container {
-    grid-column: 1/2;
-    grid-row: 1/4;
     display: flex;
     gap: 0.1rem;
     align-items: center;
@@ -94,6 +99,13 @@ body {
     touch-action: none;
 }
 
+.settings-container {
+    margin: 0.4rem 0;
+}
+.setting-input {
+    width: 3rem;
+}
+
 .misc-tools {
     margin-top: 0.2rem;
 }
@@ -115,6 +127,27 @@ h1 {
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: all 100ms;
+}
+.btn-image {
+    font-size: smaller;
+    color: #222222;
+    background-color: #f3f3f3;
+    border: 1px solid #a0a0a0;
+    padding: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+.btn-image img {
+    padding: 0;
+    color: currentColor;
+    width: 60%;
+}
+.btn-image:hover {
+    color: white;
 }
 .btn-fade {
     background-color: #f3f3f3;

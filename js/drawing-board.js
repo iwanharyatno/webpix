@@ -7,6 +7,8 @@ const drawingBoard = {
         return this._downloading;
     },
     init(canvas) {
+        this.hasTouched = false;
+
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.shiftDown = false;
@@ -18,7 +20,10 @@ const drawingBoard = {
             this.ctrlDown = e.which == 1;
         });
 
+        this.canvas.addEventListener('touchstart', () => this.hasTouched = true)
+        this.canvas.addEventListener('touchend', () => this._saveCheckpoint());
         this.canvas.addEventListener('mouseup', (e) => {
+            if (!this.hasTouched) this._saveCheckpoint();
             this.ctrlDown = false;
             if (deleteModeMobile.value) return;
             this.shiftDown = false;
@@ -64,6 +69,9 @@ const drawingBoard = {
             this.draw();
         });
 
+        window.addEventListener(EVENT_UNDO, () => this._undo());
+        window.addEventListener(EVENT_REDO, () => this._redo());
+
         window.addEventListener('keydown', (e) => {
             this.ctrlDown = e.ctrlKey;
             this.shiftDown = e.shiftKey;
@@ -82,6 +90,21 @@ const drawingBoard = {
         const yCells = Math.round(h / cellSize);
 
         this.pixels = new Array(xCells).fill(null).map(_ => new Array(yCells).fill(null));
+
+        this._saveCheckpoint();
+    },
+    _undo() {
+        historyStore.undo();
+        this.pixels = historyStore.getCurrentCheckpoint();
+        this.draw();
+    },
+    _redo() {
+        historyStore.redo();
+        this.pixels = historyStore.getCurrentCheckpoint();
+        this.draw();
+    },
+    _saveCheckpoint() {
+        historyStore.addCheckpoint(this.pixels);
     },
     _getIndicesFromClickEvent(e) {
         let displayX = document.documentElement.scrollLeft + (e.clientX - e.target.offsetLeft);

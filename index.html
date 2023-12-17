@@ -13,16 +13,35 @@
     </header>
 
     <main id="editor">
-        <div class="color-tools">
-            <div class="colors-container"></div>
-            <form class="color-picker" id="formPickColor">
-                <label for="colorInput" class="label">Pick a Color</label>
-                <input type="color" id="colorInput" class="input">
-                <button class="btn btn-form">Submit</button>
-                <button class="btn btn-fade" data-cancel="true">Cancel</button>
-            </form>
+        <div class="quick-tools">
+            <div class="quick-buttons">
+                <button class="btn btn-image">
+                    <img src="/assets/setting.svg" alt="Settings">
+                </button>
+                <button class="btn btn-image" id="undoButton">
+                    <img src="/assets/undo.svg" alt="Undo">
+                </button>
+                <button class="btn btn-image" id="redoButton">
+                    <img src="/assets/redo.svg" alt="Redo">
+                </button>
+            </div>
+            <div class="color-tools">
+                <div class="colors-container"></div>
+                <form class="color-picker" id="formPickColor">
+                    <label for="colorInput" class="label">Pick a Color</label>
+                    <input type="color" id="colorInput" class="input">
+                    <button class="btn btn-form">Submit</button>
+                    <button class="btn btn-fade" data-cancel="true">Cancel</button>
+                </form>
+            </div>
         </div>
-        <canvas id="drawingBoard" width="1080" height="1280"></canvas>
+        <canvas id="drawingBoard" width="1080" height="1080"></canvas>
+        <div class="settings-container">
+            <div class="setting">
+                <label for="cellSizeInput" class="setting-label">Cell size (px)</label>
+                <input type="number" id="cellSizeInput" class="setting-input" />
+            </div>
+        </div>
         <div class="misc-tools">
             <input type="checkbox" id="deleteModeCheck" data-mobile>
             <label for="deleteModeCheck" data-mobile>Delete Mode</label>
@@ -38,6 +57,9 @@
         <p id="copyright">&copy; 2023 IHY Projects</p>
     </footer>
 
+    <script src="js/data.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/quick-tools.js"></script>
     <script src="js/color-picker.js"></script>
     <script src="js/color-palette.js"></script>
     <script src="js/drawing-board.js"></script>
