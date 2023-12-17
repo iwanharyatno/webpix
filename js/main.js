@@ -22,7 +22,7 @@ actionUndo.init(undoButton);
 actionRedo.init(redoButton);
 
 drawingBoard.init(canvas);
-drawingBoard.setCellSize(120);
+drawingBoard.setCellSize(54);
 
 drawingBoard.draw();
 
